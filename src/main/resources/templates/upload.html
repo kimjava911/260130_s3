@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<body>
+    <h2>S3 내부 서빙 테스트 (비공개 버킷)</h2>
+
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">업로드</button>
+    </form>
+
+    <hr>
+
+    <div th:if="${fileName}">
+        <p>파일명: <span th:text="${fileName}"></span></p>
+        <img th:src="@{/images/{name}(name=${fileName})}" width="400" alt="Uploaded Image">
+    </div>
+</body>
+</html>
