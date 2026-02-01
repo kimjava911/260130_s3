@@ -1,5 +1,31 @@
 spring:
   application:
-    name: s3
+    name: s3 # 애플리케이션 이름 설정
   profiles:
-    active: dev
+    active: dev # 활성화할 프로파일 설정 (여기서는 'dev' 프로파일 사용)
+
+  # H2 데이터베이스 설정 (인메모리 DB)
+  datasource:
+    url: jdbc:h2:mem:testdb # JDBC URL: 메모리 내 'testdb'라는 이름의 DB 생성
+    driver-class-name: org.h2.Driver # 사용할 JDBC 드라이버 클래스
+    username: sa # DB 사용자 이름 (기본값: sa)
+    password: # DB 비밀번호 (기본값: 없음)
+
+  # JPA (Java Persistence API) 설정
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect # 사용할 데이터베이스 방언(Dialect) 설정 (H2용)
+    hibernate:
+      ddl-auto: update # 애플리케이션 시작 시 DB 스키마 자동 업데이트 (create, create-drop, update, validate, none)
+    show-sql: true # 실행되는 SQL 쿼리를 콘솔에 출력
+
+  # H2 콘솔 설정 (웹 브라우저에서 DB 확인 가능)
+  h2:
+    console:
+      enabled: true # H2 콘솔 활성화
+      path: /h2-console # H2 콘솔 접속 경로 (http://localhost:8080/h2-console)
+
+  # 파일 업로드 크기 제한 설정
+  servlet:
+    multipart:
+      max-file-size: 10MB # 단일 파일 최대 업로드 크기
+      max-request-size: 10MB # 전체 요청(여러 파일 포함) 최대 크기

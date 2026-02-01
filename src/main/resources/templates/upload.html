@@ -10,9 +10,14 @@
 
     <hr>
 
-    <div th:if="${fileName}">
-        <p>파일명: <span th:text="${fileName}"></span></p>
-        <img th:src="@{/images/{name}(name=${fileName})}" width="400" alt="Uploaded Image">
-    </div>
+    <h3>업로드된 파일 목록</h3>
+    <ul>
+        <li th:each="file : ${files}">
+            <p>파일명: <span th:text="${file.originalFileName}"></span></p>
+            <img th:src="@{/images/{name}(name=${file.storedFileName})}" width="200" alt="Uploaded Image">
+            <br>
+            <small th:text="${file.uploadTime}"></small>
+        </li>
+    </ul>
 </body>
 </html>

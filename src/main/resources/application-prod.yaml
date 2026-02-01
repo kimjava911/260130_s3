@@ -4,7 +4,7 @@ spring:
       s3:
         bucket: ${AWS_BUCKET_NAME} # S3 버킷 이름 (환경 변수 또는 실제 값으로 대체 필요)
       region:
-        static: ap-northeast-2 # AWS 리전 설정 (예: 서울 리전은 ap-northeast-2)
+        static: ${AWS_REGION} # AWS 리전 설정 (예: 서울 리전은 ap-northeast-2)
       credentials:
         access-key: ${AWS_ACCESS_KEY} # AWS 액세스 키 ID (보안 주의)
         secret-key: ${AWS_SECRET_KEY} # AWS 시크릿 액세스 키 (보안 주의)
